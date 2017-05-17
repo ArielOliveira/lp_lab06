@@ -1,7 +1,12 @@
 #include <iostream>
+#include "stack.h"
+
+using std::cin;
+using std::cout;
+using std::endl;
+using std::streamsize;
 
 int main() {
-	std::cout << "Hello World!" << std::endl;
 
 	return 0;
 }

@@ -12,9 +12,9 @@ TEST_DIR = ./test
 
 CC = g++
 
-CPPFLAGS = -Wall -pedantic -ansi -std=c++11 -I. -I$(INC_DIR)/
+CPPFLAGS = -Wall -pedantic -ansi -std=c++11 -I.
 
-OBJS_PROG_1 = $(OBJ_DIR)/programa_1/main.o
+OBJS_PROG_1 = $(OBJ_DIR)/programa_1/main.o $(OBJ_DIR)/programa_1/stack.o
 
 RM = rm -rf
 
@@ -22,10 +22,14 @@ RM = rm -rf
 
 programa_1: $(programa_1)
 
+$(programa_1): CPPFLAGS+= -I$(INC_DIR)/programa_1/
 $(programa_1): $(OBJS_PROG_1)
 	$(CC) $^ $(CPPFLAGS) -o $@
 
 $(OBJ_DIR)/programa_1/main.o: $(SRC_DIR)/programa_1/main.cpp
+	$(CC) -c $(CPPFLAGS) -o $@ $<
+
+$(OBJ_DIR)/programa_1/stack.o: $(SRC_DIR)/programa_1/stack.cpp $(INC_DIR)/programa_1/stack.h
 	$(CC) -c $(CPPFLAGS) -o $@ $<
 
 dir:
