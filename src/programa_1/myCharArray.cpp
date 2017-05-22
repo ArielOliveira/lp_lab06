@@ -6,7 +6,7 @@ using std::cout;
 using std::endl;
 
 void myCharArray::charInit() {
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < size-1; i++) {
 		c[i] = 0;
 	}
 }
@@ -48,8 +48,10 @@ void myCharArray::makeLow() {
 	}
 }
 
-char* myCharArray::getCharPointer() {
-	return c;
+char* myCharArray::getChar() {
+	char *b = new char[size];
+	for (int i = 0; i < size; i++) b[i] = c[i];
+	return b;
 }
 
 myCharArray::~myCharArray() {}

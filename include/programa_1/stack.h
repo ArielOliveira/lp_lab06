@@ -7,7 +7,7 @@ class Stack {
 		T *vector;
 		int max;
 		int size;
-		void arrayInit(T *vector);
+		void arrayInit();
 
 	public:
 		Stack(int size);
@@ -24,7 +24,7 @@ int Stack<T>::getSize() {
 }
 
 template<typename T>
-void Stack<T>::arrayInit(T *vector) {
+void Stack<T>::arrayInit() {
 	for (int i = 0; i < max; i++) {
 		vector[i] = 0;
 	}
@@ -33,8 +33,8 @@ void Stack<T>::arrayInit(T *vector) {
 template<typename T>
 Stack<T>::Stack(int max) {
 	vector = new T[max];
-	arrayInit(vector);
 	this->max = max;
+	arrayInit();
 	size = 0;
 }
 

@@ -15,6 +15,7 @@ CC = g++
 CPPFLAGS = -Wall -pedantic -ansi -std=c++11 -I.
 
 OBJS_PROG_1 = $(OBJ_DIR)/programa_1/main.o $(OBJ_DIR)/programa_1/myCharArray.o
+OBJS_PROG_2 = $(OBJ_DIR)/programa_2/main.o $(OBJ_DIR)/programa_2/classList.o
 
 RM = rm -rf
 
@@ -22,7 +23,7 @@ RM = rm -rf
 
 programa_1: $(programa_1)
 
-$(programa_1): CPPFLAGS+= -I$(INC_DIR)/programa_1/
+$(programa_1): CPPFLAGS += -I$(INC_DIR)/programa_1/
 $(programa_1): $(OBJS_PROG_1)
 	$(CC) $^ $(CPPFLAGS) -o $@
 
@@ -30,6 +31,18 @@ $(OBJ_DIR)/programa_1/main.o: $(SRC_DIR)/programa_1/main.cpp $(INC_DIR)/programa
 	$(CC) -c $(CPPFLAGS) -o $@ $<
 
 $(OBJ_DIR)/programa_1/myCharArray.o: $(SRC_DIR)/programa_1/myCharArray.cpp $(INC_DIR)/programa_1/myCharArray.h
+	$(CC) -c $(CPPFLAGS) -o $@ $<
+
+programa_2: $(programa_2)
+
+$(programa_2): CPPFLAGS += -I$(INC_DIR)/programa_2/
+$(programa_2): $(OBJS_PROG_2)
+	$(CC) $^ $(CPPFLAGS) -o $@	
+
+$(OBJ_DIR)/programa_2/main.o: $(SRC_DIR)/programa_2/main.cpp $(INC_DIR)/programa_2/doubleNode.h
+	$(CC) -c $(CPPFLAGS) -o $@ $<
+
+$(OBJ_DIR)/programa_2/classList.o: $(SRC_DIR)/programa_2/classList.cpp $(INC_DIR)/programa_2/classList.h
 	$(CC) -c $(CPPFLAGS) -o $@ $<
 
 dir:

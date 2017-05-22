@@ -16,7 +16,7 @@ class myCharArray {
 		~myCharArray();
 		void makeLow();
 		void toChar(string& word);
-		char* getCharPointer();
+		char* getChar();
 		bool isPalindrome(Stack<char> &stack);
 };
 
